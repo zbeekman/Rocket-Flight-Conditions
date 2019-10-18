@@ -10,3 +10,5 @@ jupyter contrib nbextension install --user
 jupyter nbextension enable --py widgetsnbextension
 jupyter nbextension install --user --py jupytext
 jupyter nbextension enable --py jupytext
+jupyter nbextension install --user --py bqplot
+jupyter nbextension enable --py bqplot

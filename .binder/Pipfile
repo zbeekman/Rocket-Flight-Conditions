@@ -16,6 +16,8 @@ sympy = "*"
 nbgitpuller = "*"
 ambiance = "*"
 bqplot = "*"
+widgetsnbextension = "*"
+jupyterlab = "*"
 
 [requires]
 python_version = "3.7"
