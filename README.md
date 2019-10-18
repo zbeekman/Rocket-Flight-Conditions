@@ -3,7 +3,6 @@
 This is primarily geared towards model rocketry, although it could be used to
 calculate flight conditions for nearly any flight vehicle in the earths atmosphere.
 
-[![CircleCI](https://circleci.com/gh/zbeekman/Rocket-Flight-Conditions/tree/master.svg?style=svg)](https://circleci.com/gh/zbeekman/Rocket-Flight-Conditions/tree/master)
 [![CircleCI][circleci badge]][circleci build]
 [![binder badge][binder icon]][binder launch link]
 
