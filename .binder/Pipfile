@@ -15,6 +15,7 @@ ipywidgets = "*"
 sympy = "*"
 nbgitpuller = "*"
 ambiance = "*"
+bqplot = "*"
 
 [requires]
 python_version = "3.7"

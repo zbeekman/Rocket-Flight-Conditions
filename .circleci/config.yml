@@ -96,11 +96,14 @@ jobs:
             set -x
             if docker pull "${CONTAINER_NAME}:${DOCKER_TAG}"; then
               jupyter-repo2docker --debug --user-name jovyan --user-id 1000 --no-run --image-name "${CONTAINER_NAME}:${DOCKER_TAG}" --cache-from "${CONTAINER_NAME}:${DOCKER_TAG}" "${REPO_NAME}"
+            elif docker pull "${CONTAINER_NAME}:${CIRCLE_BRANCH}"; then
+              jupyter-repo2docker --debug --user-name jovyan --user-id 1000 --no-run --image-name "${CONTAINER_NAME}:${DOCKER_TAG}" --cache-from "${CONTAINER_NAME}:${CIRCLE_BRANCH}" "${REPO_NAME}"
             else
               jupyter-repo2docker --debug --user-name jovyan --user-id 1000 --no-run --image-name "${CONTAINER_NAME}:${DOCKER_TAG}" "${REPO_NAME}"
             fi
             docker ps
             docker images
+            docker tag "${CONTAINER_NAME}:${DOCKER_TAG}" "${CONTAINER_NAME}:${CIRCLE_BRANCH}"
       - run:
           name: Docker Save
           no_output_timeout: 40m
@@ -175,7 +178,11 @@ jobs:
             echo "Container name set to ${CONTAINER_NAME}:${DOCKER_TAG}"
             if [[ -n "$DOCKER_PASS" ]]; then
                   docker login -u $DOCKER_USER -p $DOCKER_PASS
+                  docker tag ${CONTAINER_NAME}:${DOCKER_TAG} ${CONTAINER_NAME}:latest
+                  docker tag ${CONTAINER_NAME}:${DOCKER_TAG} ${CONTAINER_NAME}:${CIRCLE_BRANCH}
                   docker push ${CONTAINER_NAME}:${DOCKER_TAG}
+                  docker push ${CONTAINER_NAME}:latest
+                  docker push ${CONTAINER_NAME}:${CIRCLE_BRANCH}
             fi
 workflows:
   version: 2
