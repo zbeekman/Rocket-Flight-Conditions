@@ -199,7 +199,7 @@ jobs:
                     CONTAINER_NAME="${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}"
             fi
             echo "Container name set to ${CONTAINER_NAME}:${DOCKER_TAG}"
-            GH_PACKAGE_PATH="docker.pkg.github.com/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}/jupyterlabbinder"
+            GH_PACKAGE_PATH="docker.pkg.github.com/${CIRCLE_PROJECT_USERNAME,,}/${CIRCLE_PROJECT_REPONAME,,}/jupyterlabbinder"
             echo "GH package name set to ${GH_PACKAGE_PATH}"
             if [[ -n "$DOCKER_PASS" ]]; then
                   docker login docker.pkg.github.com -u $GH_PACKAGE_USER -p $GH_PACKAGE_TOKEN
