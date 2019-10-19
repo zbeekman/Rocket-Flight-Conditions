@@ -1,14 +1,9 @@
 #!/bin/bash
 
-jupyter lab clean
 jupyter serverextension enable --py nbgitpuller --sys-prefix
-jupyter labextension install jupyterlab-jupytext@0.19 --no-build
-jupyter labextension install @jupyter-widgets/jupyterlab-manager@0.38 --no-build
-jupyter labextension install bqplot --no-build
-jupyter lab build
-jupyter contrib nbextension install --user
+jupyter labextension install jupyterlab-jupytext@0.19
+jupyter labextension install @jupyter-widgets/jupyterlab-manager@1.0
 jupyter nbextension enable --py widgetsnbextension
 jupyter nbextension install --user --py jupytext
 jupyter nbextension enable --py jupytext
-jupyter nbextension install --user --py bqplot
-jupyter nbextension enable --py bqplot
+#jupyter lab clean
